@@ -1,28 +1,158 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App!!!!"/>
+    <Header name="Ivan Ivankiv" position="Front End Developer"/>
+    <div class="content">
+      <section>
+        <CvSection :title="profile.title"         :icon="profile.icon"         :items="profile.items"/>
+        <CvSection :title="history.title"         :icon="history.icon"         :items="history.items"/>
+        <CvSection :title="education.title"       :icon="education.icon"       :items="education.items"/>
+        <CvSection :title="courses.title"         :icon="courses.icon"         :items="courses.items"/>
+        <CvSection :title="certifications.title"  :icon="certifications.icon"  :items="certifications.items"/>
+      </section>
+      <aside>
+        <Details/>
+        <Links/>
+        <Skills/>
+        <Languages/>
+        <Hobbies/>
+      </aside>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from "./components/Header.vue";
+import CvSection from "./components/CvSection.vue";
+import Details from "./components/Details.vue";
+import Links from "./components/Links.vue";
+import Skills from "./components/Skills.vue";
+import Languages from "./components/Languages.vue";
+import Hobbies from "./components/Hobbies.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    Header,
+    CvSection,
+    Details,
+    Links,
+    Skills,
+    Languages,
+    Hobbies
+  },
+  computed: {
+    profile: function() {
+      return {
+        icon: "profile.svg",
+        title: "Profile",
+        items: [
+          {
+            id: 1,
+            description:
+              "Passionated front end developer with 3+ year of experiance. " +
+              "Self-motivated, sensible, sociable, a good team player"
+          }
+        ]
+      };
+    },
+    history: function() {
+      return {
+        icon: "work-history.svg",
+        title: "Employment History",
+        items: [
+          {
+            id: 1,
+            title: "Front End Developer at SoftServe, Ivano-Frankivs'k",
+            timeDesc: "October 2016 - Present"
+          },
+          {
+            id: 2,
+            title: "Electrical Engineer at ZPUE Ukraine LLC, Ivano-Frankivsk",
+            timeDesc: "October 2013 - November 2016",
+            description:
+              "Executable function: import of electrical equipment, electric project " +
+              "for different construction objects, communication with customers."
+          },
+          {
+            id: 3,
+            title: "Electrical Engineer at Electric Group LLC, Ivano-Frankivsk",
+            timeDesc: "June 2011 - October 2013",
+            description:
+              "Executable function: electric project " +
+              "for different construction objects, communication with customers."
+          }
+        ]
+      };
+    },
+    education: function() {
+      return {
+        icon: "education.svg",
+        title: "Education",
+        items: [
+          {
+            id: 1,
+            title: "Master of Electrical Engineering, National University Lviv Polytechnic",
+            timeDesc: "July 2005 - February 2011"
+          },
+          {
+            id: 2,
+            title: "Web Developer, SoftServe IT Academy, Ivano-Frankivs'k",
+            timeDesc: "June 2016 - September 2016"
+          }
+        ]
+      };
+    },
+    courses: function() {
+      return {
+        icon: "courses.svg",
+        title: "Courses",
+        items: [
+          {
+            id: 1,
+            title: "Concepts of WEB UI Developments, Prometheus",
+            timeDesc: "July 2016 - August 2016"
+          }
+        ]
+      };
+    },
+    certifications: function() {
+      return {
+        icon: "certifications.svg",
+        title: "Certifications",
+        items: [
+          {
+            title: "JS, HTML5, CSS3 - 480, Microsoft",
+            timeDesc: "February 2019"
+          },
+          {
+            title: "Development, design and architecture of modern software systems based on object-oriented languages JavaScript",
+            timeDesc: "September 2016"
+          }
+        ]
+      };
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app {
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin: 60px;
+  }
+
+  .content {
+    display: flex;
+    margin: 35px 0;
+  }
+  section {
+    width: 75%;
+  }
+  aside {
+    width: 25%;
+  }
 </style>
